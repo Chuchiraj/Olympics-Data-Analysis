@@ -197,7 +197,7 @@ on p.Games = r.Games and p.Team = r.Team
 where p.r_n_gold = 1 and q.r_n_silver = 1  and r.r_n_bronze = 1
 
 
---18) Which countries have never won gold medal but have won silver/bronze medals?
+--17) Which countries have never won gold medal but have won silver/bronze medals?
 
 select * into olympic_data from(
 select a.*, b.region
@@ -230,14 +230,14 @@ on a.region = c.region
 where b.silver_medal_cnt >=1 
 or c.bronze_medal_cnt >=1
 
---19. In which Sport/event, India has won highest medals.
+--18) In which Sport/event, India has won highest medals.
 
 select Top 1 Sport, count(Medal) as medal_cnt 
 from olympic_data
 where region = 'India' and Medal != 'NA'
 group by Sport order by 2 desc
 
---20. Break down all olympic games where India won medal for Hockey and how many medals in each olympic games
+--19) Break down all olympic games where India won medal for Hockey and how many medals in each olympic games
 
 select region, Games, Sport, count(Medal) as medal_cnt 
 from olympic_data
